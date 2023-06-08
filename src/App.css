@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: lightgoldenrodyellow;
 }
 
-.App-link {
-  color: #61dafb;
+.input {
+  width: 450px;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid burlywood;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input:focus {
+  border: 2px solid burlywood;
+}
+
+.primaryBtn {
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid burlywood;
+  cursor: pointer;
+  background-color: lightyellow;
+}
+
+.primaryBtn:hover {
+  background-color: burlywood;
+}
+.container {
+  height: 250px;
+  border: 1px solid burlywood;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.item-container:nth-child(n) {
+  background-color: lightyellow;
+}
+
+.item-container:nth-child(2n) {
+  background-color: burlywood;
+}
+
+.item-container:hover .btn-horizontal {
+  /* background-color: red; */
+  display: flex;
+}
+
+.horizontal {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-horizontal {
+  display: flex;
+  gap: 10px;
+  display: none;
+}
+
+.search {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid burlywood;
+  font-size: 14px;
+  outline: none;
+}
+
+.sortBtn {
+  border: 2px solid burlywood;
+  cursor: pointer;
+  background-color: lightyellow;
+}
+
+.sortBtn:hover {
+  background-color: burlywood;
+}
+
+.clearAll {
+  width: 100%;
+  padding: 8px;
+  background-color: burlywood;
+  outline: none;
+  border: 1px solid burlywood;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.clearAll:hover {
+  background-color: lightyellow;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
