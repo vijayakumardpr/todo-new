@@ -10,6 +10,7 @@ const Header = () => {
     const [selectId, setSelectId] = useState(null)
     const [searchTxt, setSearchTxt] = useState("")
     const [sorting, setSorting] = useState(false)
+    const [prompt, setPrompt] = useState(false)
 
 
     useEffect(() => {
@@ -22,15 +23,22 @@ const Header = () => {
     }, [sorting])
 
 
-    function getItem() {
+    function addItem() {
         if (items !== "" && selectId === null) {
             const newTask = {
                 id: uuidv4(),
                 item: items,
                 isComplete: false
             }
-            setTodos(prevTodos => [...prevTodos, newTask])
-            localStorage.setItem("todo", JSON.stringify([...todos, newTask]))
+            const data = todos.find(prevTodos => prevTodos.item === items)
+            if (data === undefined) {
+                setTodos(prevTodos => [...prevTodos, newTask])
+                localStorage.setItem("todo", JSON.stringify([...todos, newTask]))
+                setPrompt(false)
+            } else {
+                setPrompt(true)
+            }
+
             setItems("")
         } else if (selectId !== null) {
             const data = todos.map(item => {
@@ -41,6 +49,7 @@ const Header = () => {
             setItems("")
             setSelectId(null)
         }
+
     }
 
     function handleCheck(ids, isChecked) {
@@ -92,11 +101,12 @@ const Header = () => {
         localStorage.removeItem("todo");
     }
 
-    console.log(todos);
+    //console.log(todos);
     return (
         <div>
+            {prompt && <div>Already Exist in the list</div>}
             <input className="input" placeholder='Add Items Here...' value={items} onChange={(e) => setItems(e.target.value)} />
-            <button className="primaryBtn" onClick={getItem}>
+            <button className="primaryBtn" onClick={addItem}>
                 <AiOutlinePlus />
             </button>
             <div style={{ display: "flex", justifyContent: "space-between", padding: "5px 0" }}>
